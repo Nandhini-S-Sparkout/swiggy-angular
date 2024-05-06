@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+  
+            <h2>Dessert Menu</h2>
+            <div>
+                <div *ngFor="let dessert of desserts; let i = index" (click)="selectDessert(dessert)" class="d-flex justify-content-between">
+                  <div class="fw-bold d-flex align-items-center">
+                    <span class="pizza-image">{{ dessert.name }}</span>
+                  </div>
+                  <div class="mw-100 mh-50">
+                    <div class="d-flex justify-content-center rounded-left w-100">
+                      <img [src]="getDessertImage(dessert.name)" alt="{{dessert.name}}" class="w-75 rounded-3" >
+                    </div>
+  
+                    <div class="my-2" *ngIf="dessert.quantity === 0; else quantityBtn" class="text-center">
+                     <div type="button" class="btn btn-success w-75 mt-2 " (click)="incrementQuantity(i);parentToChild(i)">ADD CART</div>
+                    </div>
+                    <br>
+                    <ng-template #quantityBtn>
+                    <div class="btn-group justify-center my-2 w-100"  role="group" aria-label="Basic example">
+                     <button type="button" class="btn btn-success" (click)="decrementQuantity()">-</button>
+                     <button type="button" class="btn btn-success">{{dessert.quantity}}</button>
+                     <button type="button" class="btn btn-success" (click)="incrementQuantity(i)">+</button>
+                    </div>
+                    </ng-template>
+                  </div>
+  
+                 <br>
+                 <br>
+                </div>
+              </div>
+            
+        </div>
+        <div class="col-md-6">
+            <!-- Content for the right column -->
+            <div class="col">
+              <app-cart [selectedItem]="totalObjectArray"></app-cart>
+              </div>
+        </div>
+    </div>
+  </div>

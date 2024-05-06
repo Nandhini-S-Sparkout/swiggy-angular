@@ -1,0 +1,19 @@
+<div>
+  <h2>Cart Menu</h2>
+</div>
+<div *ngFor="let food of selectedItem">
+  <div *ngIf="food.quantity>0">
+  <div>
+    <h3>Name:{{ food.name }}</h3>
+    <p>Price:{{ food.price }}</p>
+    <p>Quantity:{{food.quantity}}</p>
+    <p>Total:{{food.price * food.quantity}}</p>
+  </div>
+
+</div>
+</div>
+<div>
+  <p>Overall Totall Amount:{{overAllTotal()}}</p>
+</div>
+
+
